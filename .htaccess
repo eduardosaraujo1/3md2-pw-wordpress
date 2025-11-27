@@ -2,10 +2,8 @@
 RewriteEngine On
 RewriteBase /
 
-# If the file exists inside the www directory, serve it
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ www/$1 [L]
+# Don't rewrite if already in www directory (prevent loop)
+RewriteCond %{REQUEST_URI} !^/www/
 
-# WordPress front controller
-RewriteRule . /www/index.php [L]
+# Rewrite everything to the www directory
+RewriteRule ^(.*)$ www/$1 [L]
