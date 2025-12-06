@@ -1,9 +1,0 @@
-# Redirect all requests to the www directory
-RewriteEngine On
-RewriteBase /
-
-# Don't rewrite if already in www directory (prevent loop)
-RewriteCond %{REQUEST_URI} !^/www/
-
-# Rewrite everything to the www directory
-RewriteRule ^(.*)$ www/$1 [L]

@@ -10,3 +10,6 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
+
+# # Copy application files to the Apache document root
+# COPY ./www /var/www/html/
